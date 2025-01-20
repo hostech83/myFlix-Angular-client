@@ -24,12 +24,11 @@ export class FetchApiDataService {
   }
 
   // User Login
-  public userLogin(userDetails: any): Observable<any> {
+  public userLogin(userData: any): Observable<any> {
     return this.http
-      .post(`${apiUrl}login`, userDetails)
+      .post(apiUrl + 'login', userData)
       .pipe(catchError(this.handleError));
   }
-
   // Get All Movies
   public getAllMovies(): Observable<any> {
     return this.http.get(`${apiUrl}movies`).pipe(catchError(this.handleError));
