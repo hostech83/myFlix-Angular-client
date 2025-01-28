@@ -1,54 +1,48 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss'],
-  standalone: true,
-  imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSnackBarModule,
-    FormsModule,
-  ],
 })
 export class UserLoginFormComponent implements OnInit {
-  @Input() userData = { Username: '', Password: '' };
+  @Input() userData = { username: '', password: '' };
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
-      (response) => {
-        // Store the current user and token in localStorage
-        localStorage.setItem('user', JSON.stringify(response.user));
-        localStorage.setItem('token', response.token);
+      (result) => {
+        console.log(result);
+        // Store the user data and token in localStorage
+        localStorage.setItem('user', result.user.username);
+        localStorage.setItem('token', result.token);
 
-        this.dialogRef.close(); // Close the dialog on success
-        console.log(response);
-        this.snackBar.open('Login successful!', 'OK', { duration: 2000 });
+        // Close the dialog
+        this.dialogRef.close();
+
+        // Show a success message
+        this.snackBar.open('Login successful!', 'OK', {
+          duration: 2000,
+        });
+
+        // Navigate to the movies page
+        this.router.navigate(['movies']);
       },
       (error) => {
-        console.log(error);
-        this.snackBar.open('Login failed! Please try again.', 'OK', {
+        // Show an error message if login fails
+        this.snackBar.open('Login failed: ' + error.error.message, 'OK', {
           duration: 2000,
         });
       }

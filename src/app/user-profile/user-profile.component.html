@@ -1,0 +1,53 @@
+<div class="profile-container">
+  <h2>Welcome, {{ user.Username }}</h2>
+
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="user.Email"
+        placeholder="Enter your email"
+        type="email"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Birthday</mat-label>
+      <input
+        matInput
+        [(ngModel)]="user.Birthday"
+        placeholder="Enter your birthday"
+        type="date"
+      />
+    </mat-form-field>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="updateUser()">
+        Save Changes
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteUser()">
+        Delete Account
+      </button>
+      <button mat-button (click)="resetUser()">Reset</button>
+    </div>
+  </form>
+
+  <h3>Your Favorite Movies</h3>
+  <ul>
+    <li *ngFor="let movie of favoriteMovies">
+      {{ movie.Title }}
+    </li>
+  </ul>
+
+  <h3>To-Watch Movies</h3>
+  <ul>
+    <li *ngFor="let movie of toWatchMovies">
+      {{ movie.Title }}
+    </li>
+  </ul>
+
+  <button mat-raised-button color="accent" (click)="navigateToMovies()">
+    Back to Movies
+  </button>
+</div>

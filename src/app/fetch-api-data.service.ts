@@ -8,7 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://moro-flix-f9ac320c9e61.herokuapp.com';
+const apiUrl = 'https://moro-flix-f9ac320c9e61.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',

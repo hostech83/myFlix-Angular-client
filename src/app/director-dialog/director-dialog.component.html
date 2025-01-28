@@ -1,0 +1,18 @@
+<div class="director-dialog-container">
+  <h1 matDialogTitle class="title">
+    {{ movie.title }} - Director
+    <hr />
+  </h1>
+
+  <mat-dialog-content>
+    <mat-card class="director-description">
+      <h2>{{ movie.director.name }}</h2>
+      <p><strong>Bio:</strong> {{ movie.director.bio }}</p>
+      <p><strong>Birthday:</strong> {{ movie.director.birthYear | date }}</p>
+    </mat-card>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button matDialogClose>Close</button>
+  </mat-dialog-actions>
+</div>
