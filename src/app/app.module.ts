@@ -24,6 +24,15 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movie', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  { path: 'profile', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   declarations: [
@@ -35,8 +44,10 @@ import { DirectorDialogComponent } from './director-dialog/director-dialog.compo
     UserProfileComponent,
     GenreDialogComponent,
     DirectorDialogComponent,
+    MenuBarComponent,
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     MatDialogModule,
     MatInputModule,
     MatButtonModule,

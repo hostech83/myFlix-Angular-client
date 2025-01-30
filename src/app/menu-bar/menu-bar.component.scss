@@ -1,0 +1,46 @@
+.fixed-menubar {
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Logo on left, buttons on right
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 0; // Ensure it sticks to the left
+}
+
+.clickable-logo {
+  width: 143.2px;
+  height: 40px;
+  cursor: pointer; // Makes logo clickable
+}
+
+.menu-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px; // Adds spacing between buttons
+  margin-left: auto; // Pushes buttons to the right
+
+  button {
+    color: white;
+    border: 1px solid white;
+    background: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #ffba00;
+    }
+
+    &.active {
+      font-weight: bold;
+      border-color: lightblue;
+    }
+  }
+}

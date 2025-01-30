@@ -1,0 +1,56 @@
+mat-card {
+  width: 100%;
+  margin: 50px auto; // Center the card on the page
+  padding: 20px;
+  background-color: aquamarine;
+  border-radius: 12px; // Smooth rounded corners
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+
+  mat-card-header {
+    text-align: center;
+
+    mat-card-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 10px;
+      color: #3f51b5; // Primary theme color
+    }
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; // Space between input fields
+
+    mat-form-field {
+      width: 100%; // Full-width input fields
+
+      input {
+        font-size: 1rem;
+        padding: 10px;
+      }
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center; // Center the button
+
+    button {
+      color: #3f51b5;
+      padding: 8px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: white;
+      border-radius: 24px; // Rounded button
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        background-color: #004d00; /* Darker green on hover */
+        color: white;
+        transform: translateY(-2px); // Lift effect
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
+      }
+    }
+  }
+}

@@ -57,6 +57,7 @@ export class GenreDialogComponent implements OnInit {
         this.moviesInSameGenre = movies.filter(
           (movie: any) => movie.genre.name === this.genre.name
         );
+        console.log(this.moviesInSameGenre); // Log the filtered movies
       },
       error: () => {
         this.snackBar.open('Error loading movies in this genre', 'OK', {

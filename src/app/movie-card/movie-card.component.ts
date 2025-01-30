@@ -42,6 +42,7 @@ export class MovieCardComponent implements OnInit {
 
   openGenreDialog(genre: any): void {
     this.dialog.open(GenreDialogComponent, {
+      width: '800px',
       data: { genre },
     });
   }

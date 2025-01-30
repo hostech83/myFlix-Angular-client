@@ -1,0 +1,32 @@
+<mat-card color="primary" class="fixed-menubar">
+  <!-- Logo aligned to the left -->
+  <!--<span class="logo" (click)="navigateToMovies()">
+    <img
+      src="#"
+      width="143.2"
+      height="40"
+      alt="Logo of myFlix that navigates to the welcome page"
+      matTooltip="Navigate to welcome page"
+      class="clickable-logo"
+    />
+  </span>
+
+  <!-- Buttons aligned to the right -->
+  <span class="menu-buttons">
+    <button
+      mat-button
+      [class.active]="isOnMoviesRoute()"
+      (click)="navigateToMovies()"
+    >
+      Movies
+    </button>
+    <button
+      mat-button
+      [class.active]="isOnProfileRoute()"
+      (click)="navigateToProfile()"
+    >
+      Profile
+    </button>
+    <button mat-button (click)="navigateToWelcome()">Logout</button>
+  </span>
+</mat-card>

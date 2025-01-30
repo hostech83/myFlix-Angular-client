@@ -1,53 +1,58 @@
 <div class="profile-container">
-  <h2>Welcome, {{ user.Username }}</h2>
+  <mat-card class="profile-card">
+    <h2>Welcome {{ user.username }}</h2>
 
-  <form>
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input
-        matInput
-        [(ngModel)]="user.Email"
-        placeholder="Enter your email"
-        type="email"
-      />
-    </mat-form-field>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.email"
+          placeholder="Enter your Email"
+          type="email"
+          required
+          #email="ngModel"
+        />
+        <mat-error *ngIf="email.invalid && email.touched">
+          Please enter a valid email.
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Birthday</mat-label>
-      <input
-        matInput
-        [(ngModel)]="user.Birthday"
-        placeholder="Enter your birthday"
-        type="date"
-      />
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Birthday</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.birthday"
+          placeholder="Enter your Birthday"
+          type="date"
+        />
+      </mat-form-field>
 
-    <div class="buttons">
-      <button mat-raised-button color="primary" (click)="updateUser()">
-        Save Changes
-      </button>
-      <button mat-raised-button color="warn" (click)="deleteUser()">
-        Delete Account
-      </button>
-      <button mat-button (click)="resetUser()">Reset</button>
-    </div>
-  </form>
+      <div class="buttons">
+        <button mat-raised-button (click)="updateUser()">Save Changes</button>
+        <button mat-raised-button color="warn" (click)="deleteUser()">
+          Delete Account
+        </button>
+        <button mat-button (click)="resetUser()">Reset</button>
+      </div>
+    </form>
 
-  <h3>Your Favorite Movies</h3>
-  <ul>
-    <li *ngFor="let movie of favoriteMovies">
-      {{ movie.Title }}
-    </li>
-  </ul>
+    <h3>Your Favorite Movies</h3>
+    <ul>
+      <li *ngFor="let movie of favoriteMovies">
+        {{ movie.title }}
+      </li>
+    </ul>
 
-  <h3>To-Watch Movies</h3>
-  <ul>
-    <li *ngFor="let movie of toWatchMovies">
-      {{ movie.Title }}
-    </li>
-  </ul>
+    <h3>To-Watch Movies</h3>
+    <ul>
+      <li *ngFor="let movie of toWatchMovies">
+        {{ movie.title }}
+      </li>
+    </ul>
 
-  <button mat-raised-button color="accent" (click)="navigateToMovies()">
-    Back to Movies
-  </button>
+    <button mat-raised-button color="accent" (click)="navigateToMovies()">
+      Back to Movies
+    </button>
+  </mat-card>
 </div>

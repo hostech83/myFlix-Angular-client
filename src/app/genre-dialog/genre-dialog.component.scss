@@ -1,0 +1,77 @@
+.genre-dialog-container {
+  padding: 24px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: auto;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0c3b2e;
+    text-align: center;
+    margin-bottom: 16px;
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #39ab52;
+      margin: 8px 0 24px;
+    }
+  }
+
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .genre-description {
+      padding: 16px;
+      background-color: #0c3b2e;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      h2 {
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 12px;
+      }
+
+      p {
+        line-height: 1.6;
+        color: #ffba00;
+      }
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+  }
+
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+
+    button {
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

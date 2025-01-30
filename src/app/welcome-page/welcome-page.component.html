@@ -1,19 +1,25 @@
-<div class="main-page">
-  <h1>Welcome to myFlix!</h1>
-  <button
-    mat-raised-button
-    (click)="openUserRegistrationDialog()"
-    style="margin-right: 10px"
-    color="primary"
-  >
-    Sign Up
-  </button>
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="openUserLoginDialog()"
-    style="margin-right: 10px"
-  >
-    Login
-  </button>
-</div>
+<main class="main">
+  <div class="app-container">
+    <div class="content-wrapper">
+      <h1>Welcome to myFlixApp</h1>
+      <button
+        mat-raised-button
+        (click)="openUserRegistrationDialog()"
+        style="margin-right: 10px"
+        color="primary"
+        aria-label="Sign up for myFlix"
+      >
+        Sign Up
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="openUserLoginDialog()"
+        style="margin-right: 10px"
+        aria-label="Log in to myFlix"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</main>
