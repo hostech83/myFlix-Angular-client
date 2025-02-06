@@ -25,14 +25,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
-
-const appRoutes: Routes = [
-  { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movie', component: MovieCardComponent },
-  { path: 'profile', component: UserProfileComponent },
-  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
-  { path: 'profile', redirectTo: 'welcome', pathMatch: 'prefix' },
-];
+import { routes } from './app.routes';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +34,7 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
+    MovieListComponent,
     WelcomePageComponent,
     UserProfileComponent,
     GenreDialogComponent,
@@ -47,7 +42,7 @@ const appRoutes: Routes = [
     MenuBarComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(routes),
     MatDialogModule,
     MatInputModule,
     MatButtonModule,

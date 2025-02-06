@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
@@ -10,23 +10,14 @@ import { DirectorDialogComponent } from '../director-dialog/director-dialog.comp
   styleUrls: ['./movie-card.component.scss'], // Fixed `styleUrl` to `styleUrls`
 })
 export class MovieCardComponent implements OnInit {
-  movie: any[] = [];
+  @Input() movie: any | undefined;
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.getMovies();
-  }
-
-  getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movie = resp;
-      console.log(this.movie);
-    });
-  }
+  ngOnInit(): void {}
 
   addToFavorites(movie: any): void {
     const username = localStorage.getItem('username');

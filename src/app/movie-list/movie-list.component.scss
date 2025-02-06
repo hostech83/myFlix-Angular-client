@@ -1,0 +1,88 @@
+:host {
+  display: block;
+  padding: 16px;
+  background-color: #6d9773; // Light background color
+}
+
+div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; // Center the grid
+}
+
+mat-card {
+  flex: 1 1 300px; // Flexible cards with a minimum width of 300px
+  max-width: 400px; // Cap the maximum width
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Soft shadow for depth
+  border-radius: 8px; // Rounded corners for a modern look
+  overflow: hidden; // Prevent image/content overflow
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 500px;
+
+  &:hover {
+    transform: translateY(-8px); // Subtle lift on hover
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15); // More shadow on hover
+  }
+}
+
+mat-card-header {
+  background-color: #0c3b2e; // Use a primary theme color for the header
+  color: white;
+  padding: 16px;
+  text-align: center;
+
+  mat-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  mat-card-subtitle {
+    font-size: 0.9rem;
+    margin-top: 4px;
+    color: #c5cae9; // Lighter subtitle color
+  }
+}
+
+img {
+  width: 100%;
+  height: 360px; // Fixed height for images
+  object-fit: cover; // Crop images to fit the card
+  border-bottom: 1px solid #e0e0e0; // Separator between image and content
+}
+
+mat-card-content {
+  padding: 16px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #616161; // Muted text color for the description
+  height: 150px; // Increase the height of the content area
+  //overflow-y: auto; // Add scroll if content overflows
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px solid #6d9773; // Separator for actions
+
+  button {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: #0c3b2e;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #ffba00; // Match the hover color with the theme
+      color: white;
+    }
+
+    &.mat-accent {
+      background-color: #6d9773; // Accent color for "Add to Favorites"
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+  <div class="movies-grid">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      class="movie-card"
+    ></app-movie-card>
+  </div>
+</div>

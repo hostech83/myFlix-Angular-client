@@ -15,6 +15,7 @@
       <app-movie-card
         *ngFor="let movie of moviesInSameGenre"
         class="movie-card"
+        [movie]="movie"
       ></app-movie-card>
     </div>
   </mat-dialog-content>

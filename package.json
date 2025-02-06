@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "deploy": "ng deploy --base-href=https://hostech83.github.io/myFlix-Angular-client/",
+    "deploy:app": "ng deploy --base-href=https://hostech83.github.io/myFlix-Angular-app/ --repo=https://github.com/hostech83/MyFlix-angular-app.git",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
