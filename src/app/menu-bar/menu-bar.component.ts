@@ -15,7 +15,7 @@ export class MenuBarComponent implements OnInit {
    * Navigates to the movies page.
    */
   navigateToMovies(): void {
-    this.router.navigate(['/movie']);
+    this.router.navigate(['/movies']);
   }
 
   /**
@@ -46,6 +46,6 @@ export class MenuBarComponent implements OnInit {
    * @returns True if the current route is the movies page.
    */
   isOnMoviesRoute(): boolean {
-    return this.router.url === '/movie';
+    return this.router.url === '/movies';
   }
 }
