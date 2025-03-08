@@ -1,10 +1,26 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+  // background-color: #3f51b5;
+}
+
 mat-card {
   width: 100%;
+  max-width: 600px; // Limit the width for better readability
   margin: 50px auto; // Center the card on the page
-  padding: 20px;
-  background-color: aquamarine;
-  border-radius: 12px; // Smooth rounded corners
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  padding: 40px;
+  background-color: #fafafa;
+  border-radius: 10px; // Smooth rounded corners
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for mat-card
+  &:hover {
+    background-color: #3f51b5; // Change background color on hover
+  }
 
   mat-card-header {
     text-align: center;
@@ -13,7 +29,13 @@ mat-card {
       font-size: 1.8rem;
       font-weight: bold;
       margin: 10px;
-      color: #3f51b5; // Primary theme color
+      color: #0a0d18;
+      transition: color 0.3s ease; // Smooth transition for hover effect
+
+      // Hover effect for mat-card-title
+      &:hover {
+        color: #fafafa; // Change text color on hover
+      }
     }
   }
 
@@ -25,29 +47,51 @@ mat-card {
     mat-form-field {
       width: 100%; // Full-width input fields
 
+      // Remove background color from input field
+      .mat-form-field-outline {
+        background-color: transparent !important;
+      }
+
+      // Make input text bigger
       input {
-        font-size: 1rem;
-        padding: 10px;
+        font-size: 1.2rem; // Increase font size
+        padding: 12px 16px; // Increase padding for bigger input fields
+        background-color: transparent; // Remove background color
+      }
+
+      // Style the placeholder text
+      .mat-form-field-label {
+        font-size: 2.2rem; // Increase placeholder font size
+        color: rgba(0, 0, 0, 0.6); // Adjust placeholder color
+      }
+
+      // Style the input when focused
+      .mat-input-element:focus {
+        color: #0a0d18; // Change text color when focused
       }
     }
   }
 
   mat-card-actions {
     display: flex;
-    justify-content: center; // Center the button
+    justify-content: center; // Ensures button is centered horizontally
+    align-items: center; // Ensures button is centered vertically
+    width: 100%; // Ensures it takes the full width of mat-card
 
     button {
+      border: 1px solid #081b29; // Default button border
+      padding: 10px 20px;
+      border-radius: 5px;
       color: #3f51b5;
-      padding: 8px 24px;
       font-size: 1rem;
       font-weight: bold;
       background-color: white;
-      border-radius: 24px; // Rounded button
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.3s ease; // Smooth transition for hover effect
 
+      // Hover effect for button
       &:hover {
-        background-color: #004d00; /* Darker green on hover */
-        color: white;
+        background-color: #0a0d18; // Change background color on hover
+        color: #fafafa; // Change text color on hover
         transform: translateY(-2px); // Lift effect
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
       }

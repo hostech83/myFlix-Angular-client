@@ -1,0 +1,47 @@
+<div *ngIf="movie" class="movie-details">
+  <h2>{{ movie.title }}</h2>
+  <img [src]="movie.imageURL" [alt]="movie.title" class="movie-poster" />
+  <p class="description">{{ movie.description }}</p>
+
+  <!-- Favorite Button -->
+  <button mat-button (click)="toggleFavorite(movie)">
+    {{ isFavorite(movie) ? "Remove from Favorites" : "Add to Favorites" }}
+  </button>
+
+  <!-- Genre Information -->
+  <div class="genre-director">
+    <strong>Genres:</strong>
+    <span *ngFor="let genre of movie.genres">
+      <button mat-button (click)="openGenreDialog(genre)">
+        {{ genre.name }}
+      </button>
+    </span>
+  </div>
+
+  <!-- Director Information -->
+  <div class="genre-director">
+    <strong>Director:</strong>
+    <button mat-button (click)="openDirectorDialog(movie.director)">
+      {{ movie.director.name }}
+    </button>
+  </div>
+
+  <!-- Rating and Runtime -->
+  <div class="rating-runtime">
+    <strong>Rating:</strong> {{ movie.rating }} | <strong>Runtime:</strong>
+    {{ movie.runtime }}
+  </div>
+
+  <!-- Trailer -->
+  <div class="trailer" *ngIf="movie.trailerURL">
+    <h3>Trailer</h3>
+    <iframe [src]="movie.trailerURL" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <!-- Back Button -->
+  <button mat-button (click)="goBack()">Back to Movies</button>
+</div>
+
+<div *ngIf="!movie">
+  <p>Loading movie details...</p>
+</div>

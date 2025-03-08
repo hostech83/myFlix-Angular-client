@@ -1,19 +1,41 @@
 .profile-container {
-  background-color: #6d9773;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // Ensure the container takes up the full height of the viewport
+  background-color: #0a0d18; // Dark background
+  padding: 20px; // Add padding for spacing
 }
 
 .profile-card {
   max-width: 600px;
-  margin: 0px auto; // Center the container
-  padding: 20px;
-  background-color: #0c3b2e;
-  border-radius: 12px; // Rounded corners
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+  width: 100%; // Ensure it takes full width up to max-width
+  padding: 40px; // Increased padding for better spacing
+  background-color: #fafafa; // Light background
+  border-radius: 10px; // Rounded corners
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease; // Smooth transitions
+
+  // Hover effect for the card
+  &:hover {
+    background-color: #3f51b5; // Change background color on hover
+    transform: translateY(-5px); // Lift effect
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); // Stronger shadow on hover
+  }
 
   h2 {
     text-align: center;
-    color: white;
-    margin-bottom: 20px;
+    color: #081b29; // Dark text for title
+    margin-bottom: 20px; // Spacing below title
+    font-size: 2rem; // Larger font size
+    animation: fadeIn 1s ease-in-out; // Fade-in animation
+    transition: color 0.3s ease; // Smooth transition for hover effect
+
+    // Hover effect for h2
+    &:hover {
+      color: #fafafa; // Change text color on hover
+    }
   }
 
   form {
@@ -24,6 +46,22 @@
 
   mat-form-field {
     width: 100%; // Full-width fields
+
+    .mat-form-field-outline {
+      background-color: transparent; // Remove background color
+    }
+
+    input {
+      color: #081b29; // Dark text for input
+    }
+
+    mat-label {
+      color: #081b29; // Dark text for label
+    }
+
+    .mat-form-field-underline {
+      background-color: #081b29; // Dark underline
+    }
   }
 
   .buttons {
@@ -34,16 +72,21 @@
     button {
       flex: 1;
       margin: 0 5px; // Small gap between buttons
-      background-color: white; // Default button background
-      color: black; // Text color
-      border: 1px solid #ccc; // Light border
-      padding: 10px;
+      background-color: #fafafa; // Default button background
+      color: #081b29; // Dark text color
+      border: 1px solid #081b29; // Dark border
+      padding: 12px 24px; // Increased padding for better button size
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      border-radius: 5px; // Rounded corners
+      transition: all 0.3s ease; // Smooth transition for hover effect
 
       &:hover {
-        background-color: lightblue; // Hover effect
+        background-color: #0a0d18; // Dark background on hover
+        color: #fafafa; // White text on hover
+        border-color: #fafafa; // White border on hover
+        transform: translateY(-2px); // Lift effect
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
       }
 
       &:focus {
@@ -53,12 +96,14 @@
     }
 
     .reset-button {
-      background-color: white !important;
-      color: black !important;
-      border: 1px solid #ccc;
+      background-color: #fafafa !important;
+      color: #081b29 !important;
+      border: 1px solid #081b29;
 
       &:hover {
-        background-color: lightblue !important;
+        background-color: #0a0d18 !important;
+        color: #fafafa !important;
+        border-color: #fafafa !important;
       }
     }
   }
@@ -68,21 +113,73 @@
     padding: 0;
 
     li {
-      background: #f5f5f5;
+      background: #f5f5f5; // Light background for list items
       margin: 8px 0;
       padding: 10px;
       border-radius: 6px; // Smooth appearance
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transition for hover effect
+
+      // Hover effect for list items
+      &:hover {
+        transform: translateY(-2px); // Lift effect
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
+      }
     }
   }
 
   h3 {
     margin-top: 30px;
-    color: #ffba00;
+    color: #081b29; // Yellow text for headings
+    transition: color 0.3s ease; // Smooth transition for hover effect
+
+    // Hover effect for h3
+    &:hover {
+      color: #fafafa; // Change text color on hover
+    }
   }
 
   button {
     margin-top: 20px;
-    color: black !important;
+    background-color: #fafafa; // Default button background
+    color: #081b29 !important; // Dark text color
+    border: 1px solid #081b29; // Dark border
+    padding: 12px 24px; // Increased padding for better button size
+    transition: all 0.3s ease; // Smooth transition for hover effect
+
+    &:hover {
+      background-color: #0a0d18; // Dark background on hover
+      color: #fafafa !important; // White text on hover
+      border-color: #fafafa; // White border on hover
+      transform: translateY(-2px); // Lift effect
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-card {
+    padding: 20px; // Adjusted padding for smaller screens
+  }
+
+  .buttons {
+    flex-direction: column; // Stack buttons vertically on smaller screens
+    gap: 10px; // Add spacing between buttons
+  }
+
+  button {
+    font-size: 14px; // Adjusted font size for smaller screens
+    margin: 5px 0; // Adjusted margin for smaller screens
   }
 }

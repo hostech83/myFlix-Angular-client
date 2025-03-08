@@ -1,0 +1,139 @@
+/* Container for the movie details */
+.movie-details-container {
+  margin-top: 60px; /* Add space between menu bar and movie details */
+  padding: 0 20px; /* Optional: Add horizontal padding for better alignment */
+}
+
+/* Styling for the movie details card */
+.movie-details {
+  max-width: 300px; /* Adjust the width as needed */
+  margin: 16px auto;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #0a0d18; /* Dark background from the example */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the card */
+.movie-details:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the movie poster */
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.movie-poster:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Styling for genre and director section */
+.genre-director {
+  font-size: 1rem;
+  color: #fafafa; /* White text from the example */
+  margin-bottom: 8px;
+}
+
+.genre-director button {
+  color: #95969b; /* Gray text for buttons from the example */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.genre-director button:hover {
+  color: #fafafa; /* White text on hover */
+}
+
+/* Styling for rating and runtime section */
+.rating-runtime {
+  font-size: 0.9rem;
+  color: #fafafa; /* White text from the example */
+  margin-bottom: 15px;
+}
+
+/* Styling for the description section */
+.description {
+  text-align: left;
+  margin-bottom: 15px;
+  color: #fafafa; /* White text from the example */
+}
+
+.description h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+/* Styling for the director section */
+.director {
+  text-align: left;
+  margin-bottom: 15px;
+  color: #fafafa; /* White text from the example */
+}
+
+.director h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+/* Styling for the trailer section */
+.trailer {
+  margin-bottom: 15px;
+}
+
+.trailer iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+}
+
+/* Default button styling */
+button {
+  margin: 8px;
+  background-color: transparent;
+  color: #95969b; /* Gray text from the example */
+  border: 1px solid #95969b; /* Gray border from the example */
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: transparent; /* Keep background transparent */
+  color: #fafafa; /* White text on hover */
+  border-color: #fafafa; /* White border on hover */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .movie-details {
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .movie-poster {
+    margin-bottom: 10px;
+  }
+
+  .trailer iframe {
+    height: 200px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}

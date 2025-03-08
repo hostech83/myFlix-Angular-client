@@ -1,6 +1,12 @@
+//primary color:0c3b2e{#0a0d18 black} dark green
+//secondary color:#6d9773 {#ff5900 orange}light green
+//thirth color: b46617 {#95969b gray}brown
+// fourth color: ffba00 yellow
+//fifth color: #fafafa white #081b29
+
 .genre-dialog-container {
   padding: 24px;
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   border-radius: 8px;
   max-width: 800px;
   margin: auto;
@@ -8,14 +14,14 @@
   h1 {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #0c3b2e;
+    color: #0a0d18;
     text-align: center;
     margin-bottom: 16px;
 
     hr {
       border: none;
       height: 2px;
-      background-color: #39ab52;
+      background-color: #0a0d18;
       margin: 8px 0 24px;
     }
   }
@@ -27,19 +33,19 @@
 
     .genre-description {
       padding: 16px;
-      background-color: #0c3b2e;
+      background-color: #fafafa;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
       h2 {
         font-size: 1.5rem;
-        color: white;
+        color: #fafafa;
         margin-bottom: 12px;
       }
 
       p {
         line-height: 1.6;
-        color: #ffba00;
+        color: #0a0d18;
       }
     }
 
@@ -58,19 +64,23 @@
 
   mat-dialog-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 16px;
 
     button {
       font-size: 1rem;
+      align-items: center;
       padding: 8px 16px;
-      border-radius: 6px;
+      border-radius: 24px;
       font-weight: bold;
+      background-color: hsl(197, 71%, 93%);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
 
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Hover shadow
+        background-color: #081b29;
+        color: #fafafa;
       }
     }
   }

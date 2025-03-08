@@ -1,19 +1,16 @@
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: white; /* Dark green background */
-}
-
 mat-card {
   width: 100%;
   max-width: 400px;
-  padding: 16px;
+  padding: 24px; // Increased padding for better spacing
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background-color: #52c0a1; /* White card background */
+  background-color: #fafafa; // Light card background
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for mat-card
+  &:hover {
+    background-color: #3f51b5; // Change background color on hover
+  }
 }
 
 mat-card-header {
@@ -22,35 +19,67 @@ mat-card-header {
 }
 
 mat-card-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem; // Increased font size
   font-weight: bold;
-  color: #006400; /* Dark green title */
+  color: #0a0d18; // Dark text color
+  transition: color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for mat-card-title
+  &:hover {
+    color: #fafafa; // Change text color on hover
+  }
 }
 
 mat-form-field {
   width: 100%;
   margin-bottom: 16px;
+
+  // Remove background color from input field
+  .mat-form-field-outline {
+    background-color: transparent !important;
+  }
+
+  // Make input text bigger
+  input {
+    font-size: 1.2rem; // Increase font size
+    padding: 12px 16px; // Increase padding for bigger input fields
+    background-color: transparent; // Remove background color
+  }
+
+  // Style the placeholder text
+  .mat-form-field-label {
+    font-size: 1.2rem; // Increase placeholder font size
+    color: rgba(0, 0, 0, 0.6); // Adjust placeholder color
+  }
+
+  // Style the input when focused
+  .mat-input-element:focus {
+    color: #0a0d18; // Change text color when focused
+  }
 }
 
 input::placeholder {
   font-style: italic;
-  color: #a9a9a9; /* Light gray placeholder text */
+  color: #a9a9a9; // Light gray placeholder text
 }
 
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px 24px; // Increased padding for better button size
   font-size: 1rem;
   border-radius: 24px;
-  background-color: #006400; /* Dark green button background */
-  color: white; /* White button text */
+  background-color: #272c27; // Dark button background
+  color: white; // White button text
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  transition: all 0.3s ease; // Smooth transition for hover effect
 
-button:hover {
-  background-color: #004d00; /* Darker green on hover */
-  color: white;
+  // Hover effect for button
+  &:hover {
+    background-color: #0a0d18; // Darker background on hover
+    color: #fafafa; // White text on hover
+    transform: translateY(-2px); // Lift effect
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
+  }
 }

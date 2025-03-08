@@ -1,46 +1,61 @@
-.fixed-menubar {
+.navbar {
   width: 100%;
-  background-color: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; // Logo on left, buttons on right
+  background-color: #0a0d18; // Dark background
   padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for .navbar
+  &:hover {
+    background-color: #0a0d18; // Change background color on hover
+  }
 }
 
-.logo {
+.nav-container {
   display: flex;
+  justify-content: space-between; // Push logo left and buttons right
   align-items: center;
-  margin-left: 0; // Ensure it sticks to the left
 }
 
-.clickable-logo {
-  width: 143.2px;
-  height: 40px;
-  cursor: pointer; // Makes logo clickable
+.logo img {
+  height: 40px; // Adjust logo size
+  cursor: pointer;
+  transition: transform 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for logo
+  &:hover {
+    transform: scale(1.05); // Slight zoom effect on hover
+  }
 }
 
-.menu-buttons {
+.nav-buttons {
   display: flex;
-  align-items: center;
-  gap: 15px; // Adds spacing between buttons
-  margin-left: auto; // Pushes buttons to the right
+  gap: 15px; // Space between buttons
+}
 
-  button {
-    color: white;
-    border: 1px solid white;
-    background: transparent;
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button {
+  color: #95969b; // Default button text color
+  background-color: transparent; // Transparent background
+  border: 1px solid #95969b; // Default button border
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease; // Smooth transition for hover effect
 
-    &:hover {
-      background-color: #ffba00;
-    }
+  // Hover effect for button
+  &:hover {
+    background-color: #fafafa; // Change background on hover
+    color: #0a0d18; // Change text color on hover
+    border-color: #fafafa; // Change border color on hover
+    transform: translateY(-2px); // Lift effect
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
+  }
 
-    &.active {
-      font-weight: bold;
-      border-color: lightblue;
-    }
+  // Active button styling
+  &.active {
+    background-color: #3f51b5; // Highlight active button
+    color: #fafafa; // White text for active button
+    border-color: #3f51b5; // Match border color to background
   }
 }

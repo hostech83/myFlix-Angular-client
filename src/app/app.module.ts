@@ -27,6 +27,7 @@ import { DirectorDialogComponent } from './director-dialog/director-dialog.compo
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { routes } from './app.routes';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
     GenreDialogComponent,
     DirectorDialogComponent,
     MenuBarComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

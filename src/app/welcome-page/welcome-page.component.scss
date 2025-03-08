@@ -4,27 +4,55 @@
   align-items: center;
   height: 100vh;
   border-radius: 10px;
-  background-color: #0c3b2e;
+  background-color: #0a0d18;
 }
 
 .app-container {
   text-align: center;
-  padding: 20px;
-  background-color: #52c0a1;
+  padding: 40px;
+  background-color: #fafafa;
   border-radius: 10px;
-  height: 200px;
+  height: auto; // Adjusted height to fit content
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for .app-container
+  &:hover {
+    background-color: #3f51b5; // Change background color on hover
+  }
 }
 
 .content-wrapper h1 {
   margin-bottom: 20px;
   font-size: 2rem;
-  color: yellow;
+  color: #081b29;
   animation: fadeIn 1s ease-in-out;
+  transition: color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for h1
+  &:hover {
+    color: #fafafa; // Change text color on hover
+  }
 }
 
 button {
   font-size: 16px;
+  background-color: #fafafa; // Default button background
+  color: #081b29; // Default button text color
+  border: 1px solid #081b29; // Default button border
+  padding: 12px 24px; // Increased padding for better button size
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect for button
+  &:hover {
+    background-color: #0a0d18; // Change background color on hover
+    color: #fafafa; // Change text color on hover
+    border-color: #fafafa; // Change border color on hover
+    transform: translateY(-2px); // Lift effect
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Subtle hover shadow
+  }
 }
 
 @keyframes fadeIn {
@@ -40,15 +68,15 @@ button {
 
 @media (max-width: 600px) {
   .app-container {
-    padding: 10px;
+    padding: 20px; // Adjusted padding for smaller screens
   }
 
   .content-wrapper h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; // Adjusted font size for smaller screens
   }
 
   button {
-    font-size: 14px;
-    margin: 5px 0;
+    font-size: 14px; // Adjusted font size for smaller screens
+    margin: 5px 0; // Adjusted margin for smaller screens
   }
 }
