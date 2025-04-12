@@ -3,31 +3,63 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+/**
+ * UserProfileComponent displays and manages the user's profile information.
+ * It allows viewing, updating, and deleting the profile, as well as displaying
+ * favorite and "to watch" movie lists.
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
+  /**
+   * Holds the current user's profile data.
+   */
   user: any = {};
+
+  /**
+   * List of all available movies fetched from the API.
+   */
   allMovies: any[] = [];
+
+  /**
+   * Movies the user has marked as favorites.
+   */
   favoriteMovies: any[] = [];
+
+  /**
+   * Movies the user has added to their "to watch" list.
+   */
   toWatchMovies: any[] = [];
 
+  /**
+   * Creates an instance of UserProfileComponent.
+   * @param fetchApiData - Service for interacting with the backend API
+   * @param snackBar - Angular Material Snackbar for user feedback
+   * @param router - Angular Router for navigation
+   */
   constructor(
     private fetchApiData: FetchApiDataService,
     private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
+  /**
+   * Angular lifecycle hook that runs when the component is initialized.
+   * Fetches user details and loads the user's personalized movie lists.
+   */
   ngOnInit(): void {
     this.getUser();
     this.loadUserMovies();
   }
 
-  // Fetch user details
+  /**
+   * Fetches the user's profile data from the API and stores it in localStorage.
+   */
   getUser(): void {
-    const username = localStorage.getItem('username'); // Assuming username is stored in localStorage
+    const username = localStorage.getItem('username');
     if (username) {
       this.fetchApiData.getUser(username).subscribe({
         next: (res: any) => {
@@ -44,7 +76,10 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  // Update user profile details
+  /**
+   * Updates the user's profile information using the API.
+   * Saves the updated data in localStorage and notifies the user.
+   */
   updateUser(): void {
     const username = this.user.Username;
     if (username) {
@@ -65,17 +100,24 @@ export class UserProfileComponent implements OnInit {
       });
     }
   }
-  // Reset changes
+
+  /**
+   * Resets the profile form by reloading the user data from localStorage.
+   */
   resetUser(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
-  // Navigate back to movies
+  /**
+   * Navigates the user back to the main movies page.
+   */
   navigateToMovies(): void {
     this.router.navigate(['movies']);
   }
 
-  // Delete user account
+  /**
+   * Deletes the user's account. Clears localStorage and navigates to the welcome screen.
+   */
   deleteUser(): void {
     this.fetchApiData.deleteUser(this.user.Username).subscribe({
       next: () => {
@@ -94,14 +136,21 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  // Load user's favorite and to-watch movies
+  /**
+   * Loads all movies and filters them into the user's favorites and "to watch" lists
+   * based on the user's profile data.
+   */
   loadUserMovies(): void {
     this.fetchApiData.getAllMovies().subscribe({
       next: (movies: any) => {
         this.allMovies = movies;
+
+        // Filter favorite movies
         this.favoriteMovies = movies.filter((movie: any) =>
           this.user?.FavoriteMovies?.includes(movie._id)
         );
+
+        // Filter "to watch" movies
         this.toWatchMovies = movies.filter((movie: any) =>
           this.user?.ToWatch?.includes(movie._id)
         );

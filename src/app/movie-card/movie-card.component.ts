@@ -5,21 +5,40 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
 
+/**
+ * Displays an individual movie card, allowing users to view details,
+ * add or remove the movie from favorites, and open dialogs for genre/director info.
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss'], // Fixed `styleUrl` to `styleUrls`
+  styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent implements OnInit {
+  /**
+   * The movie to display in the card.
+   */
   @Input() movie: any | undefined;
-  @Input() favoriteMovies: any[] = []; // Input for user's favorite movies
 
+  /**
+   * List of the user's favorite movies (used to toggle favorite status).
+   */
+  @Input() favoriteMovies: any[] = [];
+
+  /**
+   * Creates an instance of MovieCardComponent.
+   * @param fetchApiData - Service used to make API calls
+   * @param dialog - Angular Material dialog service
+   * @param router - Angular Router service
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
-    private router: Router // Inject Router
+    private router: Router
   ) {}
-
+  /**
+   * Angular lifecycle hook. Runs after component initialization.
+   */
   ngOnInit(): void {}
 
   /**
@@ -27,7 +46,7 @@ export class MovieCardComponent implements OnInit {
    * @param movieTitle - The title of the movie to view
    */
   navigateToMovieDetails(movieTitle: string): void {
-    this.router.navigate(['/movies', movieTitle]); // Navigate to movie details
+    this.router.navigate(['/movies', movieTitle]);
   }
 
   /**
@@ -75,6 +94,11 @@ export class MovieCardComponent implements OnInit {
     return this.favoriteMovies.some((favMovie) => favMovie._id === movie._id);
   }
 
+  /**
+   * Opens a modal dialog showing genre details.
+   * @param genre - The genre data to show
+   */
+
   openGenreDialog(genre: any): void {
     this.dialog.open(GenreDialogComponent, {
       width: '800px',
@@ -82,6 +106,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a modal dialog showing director details.
+   * @param movie - The movie object containing director data
+   */
   openDirectorDialog(movie: any): void {
     this.dialog.open(DirectorDialogComponent, {
       data: { movie },

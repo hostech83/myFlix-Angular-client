@@ -1,29 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { FetchApiDataService } from '../fetch-api-data.service'; // Adjust the import based on your service location
+import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
 
+/**
+ * MovieDetailsComponent displays detailed information about a selected movie,
+ * allows users to add or remove the movie from their list of favorites,
+ * and provides additional information through dialog modals.
+ */
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrls: ['./movie-details.component.scss'], // Adjust the style file if needed
+  styleUrls: ['./movie-details.component.scss'],
 })
 export class MovieDetailsComponent implements OnInit {
-  favoriteMovies: any[] = []; // Array to store favorite movies
-  movie: any; // Current movie being displayed
+  /**
+   * List of favorite movies for the logged-in user.
+   */
+  favoriteMovies: any[] = [];
 
+  /**
+   * The movie currently being displayed.
+   */
+  movie: any;
+
+  /**
+   * Creates an instance of MovieDetailsComponent.
+   * @param fetchApiData Service used to fetch data from the API.
+   * @param router Angular Router used for navigation.
+   * @param dialog Angular Material Dialog service to open modal dialogs.
+   */
   constructor(
     private fetchApiData: FetchApiDataService,
-    private router: Router, // Inject Router for navigation
-    public dialog: MatDialog // Inject MatDialog for opening dialogs
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
+  /**
+   * Lifecycle hook that is called after data-bound properties are initialized.
+   * Attempts to load movie data from navigation state or fetch it from the API.
+   */
   ngOnInit(): void {
-    this.movie = history.state.movie; // Retrieve movie data from navigation state
+    this.movie = history.state.movie;
     if (!this.movie) {
-      // If movie data is not available, fetch it using the movie ID
       const movieId = this.router.url.split('/').pop();
       if (movieId) {
         this.fetchApiData.getMovieById(movieId).subscribe({
@@ -38,20 +59,25 @@ export class MovieDetailsComponent implements OnInit {
       }
     }
   }
-  // Fetch favorite movies for the logged-in user
+
+  /**
+   * Retrieves the list of favorite movies for the logged-in user.
+   */
   getFavoriteMovies(): void {
     const username = localStorage.getItem('username');
     if (username) {
       this.fetchApiData.getFavoriteMovies(username).subscribe((resp: any) => {
-        this.favoriteMovies = resp || []; // Ensure it assigns an array
-        console.log(this.favoriteMovies); // Debugging: Check if favorite movies load correctly
+        this.favoriteMovies = resp || [];
+        console.log(this.favoriteMovies);
       });
     }
   }
 
-  // Load the current movie details (you may need to adjust this based on your routing)
+  /**
+   * Fetches details for the current movie using the movie ID from the URL.
+   */
   loadMovieDetails(): void {
-    const movieId = this.router.url.split('/').pop(); // Extract movie ID from the URL
+    const movieId = this.router.url.split('/').pop();
     if (movieId) {
       this.fetchApiData.getMovieById(movieId).subscribe({
         next: (resp: any) => {
@@ -65,41 +91,51 @@ export class MovieDetailsComponent implements OnInit {
     }
   }
 
-  // Toggle a movie's favorite status
+  /**
+   * Adds or removes the selected movie from the user's list of favorites.
+   * @param movie The movie to toggle in the favorites list.
+   */
   toggleFavorite(movie: any): void {
     const username = localStorage.getItem('username');
     if (username) {
       if (this.isFavorite(movie)) {
-        // Remove from favorites
         this.fetchApiData
           .deleteFavoriteMovie(username, movie._id)
           .subscribe(() => {
-            this.getFavoriteMovies(); // Refresh the favorite movies list
+            this.getFavoriteMovies();
             alert(`${movie.title} removed from favorites!`);
           });
       } else {
-        // Add to favorites
         this.fetchApiData
           .addFavoriteMovie(username, movie._id)
           .subscribe(() => {
-            this.getFavoriteMovies(); // Refresh the favorite movies list
+            this.getFavoriteMovies();
             alert(`${movie.title} added to favorites!`);
           });
       }
     }
   }
 
-  // Check if a movie is in the user's favorites
+  /**
+   * Checks if the given movie is in the user's favorites list.
+   * @param movie The movie to check.
+   * @returns True if the movie is a favorite, otherwise false.
+   */
   isFavorite(movie: any): boolean {
     return this.favoriteMovies.some((favMovie) => favMovie._id === movie._id);
   }
 
-  // Navigate back to the movies list
+  /**
+   * Navigates back to the main movie list.
+   */
   goBack(): void {
-    this.router.navigate(['/movies']); // Adjust the route as needed
+    this.router.navigate(['/movies']);
   }
 
-  // Open the genre dialog
+  /**
+   * Opens a dialog displaying information about the given genre.
+   * @param genre The genre data to display.
+   */
   openGenreDialog(genre: any): void {
     this.dialog.open(GenreDialogComponent, {
       width: '800px',
@@ -107,7 +143,10 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  // Open the director dialog
+  /**
+   * Opens a dialog displaying information about the given director.
+   * @param director The director data to display.
+   */
   openDirectorDialog(director: any): void {
     this.dialog.open(DirectorDialogComponent, {
       width: '800px',
